@@ -62,6 +62,18 @@ app.get('/update/:id', function(req, res) {
     res.render('contacts/update', {users : results});
   });
 });
+app.post('/update/:id', function(req, res) {
+  var userName = req.body.userName;
+  var num = req.params.id;
+  var sql = 'UPDATE user SET userName=? WHERE num=?';
+
+  conn.query(sql, [userName, num], function(err, results, fields) {
+    if (err) throw err;
+    console.log(results);
+    res.redirect('/getlist');
+  });
+});
+
 
 
 
