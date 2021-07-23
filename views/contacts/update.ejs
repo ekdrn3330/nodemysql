@@ -8,8 +8,18 @@
     <h1>NAME MODIFY</h1>
     <form action="/update/<%= users[0].num %>" method="post">
         num: <input type="text" name="num" value="<%= users[0].num %>">
-        userName: <input type="text" name="userName" value="<%= users[0].userName %>">
+        userName: <input type="text" name="userName" value="<%= users[0].userName %>" onkeyup="txt_length()" id="userName">
         <button type="submit">수정</button>
     </form>
+    <script>
+        function txt_length (){
+            var txt_length =  document.getElementById("userName");
+            console.log(txt_length.value.length);
+            if(txt_length.value.length > 10) {
+                alert('10자를 넘으면 안됩니다.');
+                return txt_length.value = null;
+            }
+        }
+    </script>
 </body>
 </html>
